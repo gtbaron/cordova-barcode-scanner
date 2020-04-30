@@ -41,6 +41,23 @@ class LoginComponent extends Component {
       }
     });
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  scan() {
+    // eslint-disable-next-line no-undef
+    cordova.plugins.barcodeScanner.scan(
+      result => {
+        const s = 'Result: ' + result.text + '<br/>' +
+          'Format: ' + result.format + '<br/>' +
+          'Cancelled: ' + result.cancelled;
+        document.querySelector('#results').innerHTML = s;
+      },
+      error => {
+        alert('Scanning failed: ' + error);
+      }
+    );
+  }
+
   render() {
     const { credentials } = this.props;
     const { isMountedAndCreatedByRouter } = this.state;
@@ -75,10 +92,15 @@ class LoginComponent extends Component {
                 <button type="submit" style={{ width: '100%', height: '25px' }}>
                   Login
                 </button>
+
+                <button onClick={() => this.scan()} style={{ width: '100%', height: '25px' }}>
+                  Scan Barcode
+                </button>
               </div>
             </form>
           </div>
         </div>
+        <div id={'results'} />
       </div>
     );
   }
