@@ -80,7 +80,7 @@
     "memory-fs": "^0.4.1",
     "mocha": "^7.1.2",
     "mocha-webpack": "next",
-    "node-sass": "^4.3.0",
+    "node-sass": "^7.0.0",
     "nyc": "^15.0.1",
     "prop-types": "^15.5.8",
     "radium": "^0.18.1",
